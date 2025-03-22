@@ -1,0 +1,272 @@
+{
+  "creator": "Yosys 0.47+149 (git sha1 f04b89972, clang++ 18.1.8 -fPIC -O3)",
+  "modules": {
+    "magnitude_comparator_8bit": {
+      "attributes": {
+        "src": "/home/chetana/OpenROAD-flow-scripts/flow/designs/src/magnitude_comparator_8bit/magnitude_comparator_8bit.v:1.1-10.10",
+        "top": "00000000000000000000000000000001",
+        "hdlname": "magnitude_comparator_8bit"
+      },
+      "ports": {
+        "A": {
+          "direction": "input",
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9 ]
+        },
+        "B": {
+          "direction": "input",
+          "bits": [ 10, 11, 12, 13, 14, 15, 16, 17 ]
+        },
+        "A_greater": {
+          "direction": "output",
+          "bits": [ 18 ]
+        },
+        "A_less": {
+          "direction": "output",
+          "bits": [ 19 ]
+        },
+        "A_equal": {
+          "direction": "output",
+          "bits": [ 20 ]
+        }
+      },
+      "cells": {
+        "$auto$alumacc.cc:485:replace_alu$8": {
+          "hide_name": 1,
+          "type": "$alu",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000001000",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000001000",
+            "Y_WIDTH": "00000000000000000000000000001000"
+          },
+          "attributes": {
+            "src": "/home/chetana/OpenROAD-flow-scripts/flow/designs/src/magnitude_comparator_8bit/magnitude_comparator_8bit.v:6.25-6.30"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "BI": "input",
+            "CI": "input",
+            "CO": "output",
+            "X": "output",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 10, 11, 12, 13, 14, 15, 16, 17 ],
+            "B": [ 2, 3, 4, 5, 6, 7, 8, 9 ],
+            "BI": [ "1" ],
+            "CI": [ "1" ],
+            "CO": [ 21, 22, 23, 24, 25, 26, 27, 28 ],
+            "X": [ 29, 30, 31, 32, 33, 34, 35, 36 ],
+            "Y": [ 37, 38, 39, 40, 41, 42, 43, 44 ]
+          }
+        },
+        "$auto$alumacc.cc:67:get_gt$15": {
+          "hide_name": 1,
+          "type": "$or",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "B_SIGNED": "00000000000000000000000000000000",
+            "B_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 45 ],
+            "B": [ 46 ],
+            "Y": [ 47 ]
+          }
+        },
+        "$auto$alumacc.cc:75:get_eq$13": {
+          "hide_name": 1,
+          "type": "$reduce_and",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000001000",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/home/chetana/OpenROAD-flow-scripts/flow/designs/src/magnitude_comparator_8bit/magnitude_comparator_8bit.v:6.25-6.30"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 29, 30, 31, 32, 33, 34, 35, 36 ],
+            "Y": [ 46 ]
+          }
+        },
+        "$auto$alumacc.cc:89:get_cf$11": {
+          "hide_name": 1,
+          "type": "$not",
+          "parameters": {
+            "A_SIGNED": "00000000000000000000000000000000",
+            "A_WIDTH": "00000000000000000000000000000001",
+            "Y_WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/home/chetana/OpenROAD-flow-scripts/flow/designs/src/magnitude_comparator_8bit/magnitude_comparator_8bit.v:6.25-6.30"
+          },
+          "port_directions": {
+            "A": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ 28 ],
+            "Y": [ 45 ]
+          }
+        },
+        "$ternary$/home/chetana/OpenROAD-flow-scripts/flow/designs/src/magnitude_comparator_8bit/magnitude_comparator_8bit.v:6$2": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/home/chetana/OpenROAD-flow-scripts/flow/designs/src/magnitude_comparator_8bit/magnitude_comparator_8bit.v:6.24-6.39"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "1" ],
+            "B": [ "0" ],
+            "S": [ 28 ],
+            "Y": [ 18 ]
+          }
+        },
+        "$ternary$/home/chetana/OpenROAD-flow-scripts/flow/designs/src/magnitude_comparator_8bit/magnitude_comparator_8bit.v:7$4": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/home/chetana/OpenROAD-flow-scripts/flow/designs/src/magnitude_comparator_8bit/magnitude_comparator_8bit.v:7.24-7.39"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "1" ],
+            "B": [ "0" ],
+            "S": [ 47 ],
+            "Y": [ 19 ]
+          }
+        },
+        "$ternary$/home/chetana/OpenROAD-flow-scripts/flow/designs/src/magnitude_comparator_8bit/magnitude_comparator_8bit.v:8$6": {
+          "hide_name": 1,
+          "type": "$mux",
+          "parameters": {
+            "WIDTH": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "src": "/home/chetana/OpenROAD-flow-scripts/flow/designs/src/magnitude_comparator_8bit/magnitude_comparator_8bit.v:8.24-8.40"
+          },
+          "port_directions": {
+            "A": "input",
+            "B": "input",
+            "S": "input",
+            "Y": "output"
+          },
+          "connections": {
+            "A": [ "0" ],
+            "B": [ "1" ],
+            "S": [ 46 ],
+            "Y": [ 20 ]
+          }
+        }
+      },
+      "netnames": {
+        "$auto$alumacc.cc:426:extract_cmp_alu$7": {
+          "hide_name": 1,
+          "bits": [ 37, 38, 39, 40, 41, 42, 43, 44 ],
+          "attributes": {
+            "unused_bits": "0 1 2 3 4 5 6 7"
+          }
+        },
+        "$auto$alumacc.cc:501:replace_alu$9": {
+          "hide_name": 1,
+          "bits": [ 29, 30, 31, 32, 33, 34, 35, 36 ],
+          "attributes": {
+          }
+        },
+        "$auto$alumacc.cc:502:replace_alu$10": {
+          "hide_name": 1,
+          "bits": [ 21, 22, 23, 24, 25, 26, 27, 28 ],
+          "attributes": {
+            "unused_bits": "0 1 2 3 4 5 6"
+          }
+        },
+        "$auto$rtlil.cc:2724:Not$12": {
+          "hide_name": 1,
+          "bits": [ 45 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2727:ReduceAnd$14": {
+          "hide_name": 1,
+          "bits": [ 46 ],
+          "attributes": {
+          }
+        },
+        "$auto$rtlil.cc:2772:Or$16": {
+          "hide_name": 1,
+          "bits": [ 47 ],
+          "attributes": {
+          }
+        },
+        "A": {
+          "hide_name": 0,
+          "bits": [ 2, 3, 4, 5, 6, 7, 8, 9 ],
+          "attributes": {
+            "src": "/home/chetana/OpenROAD-flow-scripts/flow/designs/src/magnitude_comparator_8bit/magnitude_comparator_8bit.v:2.18-2.19"
+          }
+        },
+        "A_equal": {
+          "hide_name": 0,
+          "bits": [ 20 ],
+          "attributes": {
+            "src": "/home/chetana/OpenROAD-flow-scripts/flow/designs/src/magnitude_comparator_8bit/magnitude_comparator_8bit.v:3.31-3.38"
+          }
+        },
+        "A_greater": {
+          "hide_name": 0,
+          "bits": [ 18 ],
+          "attributes": {
+            "src": "/home/chetana/OpenROAD-flow-scripts/flow/designs/src/magnitude_comparator_8bit/magnitude_comparator_8bit.v:3.12-3.21"
+          }
+        },
+        "A_less": {
+          "hide_name": 0,
+          "bits": [ 19 ],
+          "attributes": {
+            "src": "/home/chetana/OpenROAD-flow-scripts/flow/designs/src/magnitude_comparator_8bit/magnitude_comparator_8bit.v:3.23-3.29"
+          }
+        },
+        "B": {
+          "hide_name": 0,
+          "bits": [ 10, 11, 12, 13, 14, 15, 16, 17 ],
+          "attributes": {
+            "src": "/home/chetana/OpenROAD-flow-scripts/flow/designs/src/magnitude_comparator_8bit/magnitude_comparator_8bit.v:2.21-2.22"
+          }
+        }
+      }
+    }
+  }
+}
